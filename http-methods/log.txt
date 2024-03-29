@@ -1,0 +1,22 @@
+/abouts request received n//favicon.ico request received n//about request received n//favicon.ico request received n//about request received
+/favicon.ico request received
+/about request received
+/favicon.ico request received
+/ request received
+/favicon.ico request received
+/ request received
+/favicon.ico request received
+/products request received
+/favicon.ico request received
+/products/request?shoe=red request received
+/favicon.ico request received
+/products/request?shoe=red request received
+/favicon.ico request received
+/products?shoe=red request received
+/favicon.ico request received
+/products?shoe=red request received
+/favicon.ico request received
+/products?shoe=red request received
+/favicon.ico request received
+/products?shoe=green request received
+/favicon.ico request received
