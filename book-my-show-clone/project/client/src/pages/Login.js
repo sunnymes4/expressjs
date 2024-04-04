@@ -1,9 +1,13 @@
 import React from 'react'
 import {Form , Input , Button, message} from 'antd'
-import {Link, useNavigate} from 'react-router-dom'
-import { LoginUser } from '../apis/users'
+import {Link} from 'react-router-dom'
+import { LoginUser } from '../apis/users';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../redux/userSlice';
 
 function Login() {
+
+  const dispatchUser = useDispatch();
 
   const loginUser = async (user) => {
     try {
@@ -12,7 +16,8 @@ function Login() {
 
       if(response.success) {
         message.success(response.message);
-        window.location.href = '/';
+        dispatchUser(setUser(response.message));
+        // window.location.href = '/';
         
       } else {
         message.error(response.message)
