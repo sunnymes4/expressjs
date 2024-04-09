@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Form , Input , Button, message} from 'antd'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { LoginUser } from '../apis/users';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/userSlice';
@@ -8,6 +8,7 @@ import { setUser } from '../redux/userSlice';
 function Login() {
 
   const dispatchUser = useDispatch();
+  const navigate = useNavigate();
 
   const loginUser = async (user) => {
     try {
@@ -16,8 +17,9 @@ function Login() {
 
       if(response.success) {
         message.success(response.message);
-        dispatchUser(setUser(response.message));
-        // window.location.href = '/';
+        localStorage.setItem('token' , response.token)
+        dispatchUser(setUser(response.user));
+        window.location.href = "/";
         
       } else {
         message.error(response.message)
@@ -27,6 +29,13 @@ function Login() {
       console.log(err);
     }
   }
+
+  useEffect(() => {
+    if(localStorage.getItem('token')) {
+      navigate('/');
+    }
+  }, [])
+
   return (
      <>
       <header className="App-header">
