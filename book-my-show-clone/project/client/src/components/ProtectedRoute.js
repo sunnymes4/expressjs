@@ -20,6 +20,10 @@ function ProtectedRoute({children}) {
             const responseUser = await GetCurrentUser();
             if(responseUser.success) {
                 dispatch(setUser(responseUser.data));
+                if(!responseUser.data.isAdmin) {
+                    message.error('You are not authorized to access this page!');
+                    navigate('/');
+                }
                 // dispatch(hideLoading());
             } else {
                 dispatch(setUser(null));

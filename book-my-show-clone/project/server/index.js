@@ -7,12 +7,14 @@ const app = express();
 
 const PORT = 5003;
 
-const userRoutes = require('./routes/userRoute')
+const userRoutes = require('./routes/userRoute');
+const theaterRoutes = require('./routes/theaterRoute');
 
 app.use(express.json())
 app.use(express.urlencoded())
 
 app.use('/api/users' , userRoutes )
+app.use('/api/theaters', theaterRoutes)
 
 mongoose
 .connect('mongodb+srv://sunnymes4:Su9ynKDUSyd9rWVa@cluster0.crkylq1.mongodb.net/BMS?retryWrites=true&w=majority&appName=Cluster0')

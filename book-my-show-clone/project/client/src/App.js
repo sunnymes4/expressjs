@@ -6,7 +6,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import { useSelector } from 'react-redux';
 import ProtectedRoute from './components/ProtectedRoute';
-import Profile from './pages/Profile/Profile';
+import Profile from './pages/Profile';
 import Admin from './pages/Admin/Admin';
 
 function App() {
