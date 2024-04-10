@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { showLoading, hideLoading } from '../redux/loadersSlice';
 import { GetCurrentUser } from '../apis/users';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { setUser } from '../redux/userSlice';
 import {message, Layout, Menu} from 'antd';
 import { Header } from 'antd/es/layout/layout';
@@ -12,6 +12,7 @@ import {HomeOutlined, LogoutOutlined, ProfileOutlined, UserOutlined} from '@ant-
 function ProtectedRoute({children}) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
     const {user} = useSelector((state) => state.user)
     
     const getValidUser = async () => {
@@ -20,7 +21,7 @@ function ProtectedRoute({children}) {
             const responseUser = await GetCurrentUser();
             if(responseUser.success) {
                 dispatch(setUser(responseUser.data));
-                if(!responseUser.data.isAdmin) {
+                if(!responseUser.data.isAdmin && location.pathname === '/admin') {
                     message.error('You are not authorized to access this page!');
                     navigate('/');
                 }

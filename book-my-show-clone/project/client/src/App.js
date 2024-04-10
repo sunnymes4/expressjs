@@ -12,14 +12,10 @@ import Admin from './pages/Admin/Admin';
 function App() {
   const loading = useSelector((state) => state.loader.loadingState);
   const user = useSelector((state) => state.user.user);
-  let loader;
-
-  console.log(user);
-  console.log(loading);
 
   return (
     <div>
-      {loader && (
+      {loading && (
         <div className='loader-container'>
           <div className='loader'>Loading...</div>
         </div>
@@ -27,6 +23,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
+          <Route path="*" element={<ProtectedRoute><Home/></ProtectedRoute>} />
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
