@@ -14,7 +14,7 @@ app.use(express.json())
 app.use(express.urlencoded())
 
 app.use('/api/users' , userRoutes )
-app.use('/api/theaters', theaterRoutes)
+app.use('/api/theaters', theaterRoutes);
 
 mongoose
 .connect('mongodb+srv://sunnymes4:Su9ynKDUSyd9rWVa@cluster0.crkylq1.mongodb.net/BMS?retryWrites=true&w=majority&appName=Cluster0')

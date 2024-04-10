@@ -1,11 +1,13 @@
-import React from 'react'
+import { Button } from 'antd';
+import React from 'react';
 
 function TheaterList() {
   return (
-    <div>
+    <>
+
       <h1>Theater List</h1>
-      
-    </div>
+      <Button type="primary">Add Theater</Button>
+    </>
   )
 }
 
